@@ -24,7 +24,7 @@ public class RedmineProjectInfoTokenTest extends HudsonTestCase {
     private static final String REDMINE_URL = "http://10.122.81.238:8080";
     private static final String PROJECT_URL = "sztv-iphone";
     private static final String USER_NAME   = "xiaole.yang";
-    private static final String PASSWORD    = "123456";
+    private static final String PASSWORD    = "********";
 
     public void testGetProjectInfo () {
         RedmineProjectProperty prop = new RedmineProjectProperty(

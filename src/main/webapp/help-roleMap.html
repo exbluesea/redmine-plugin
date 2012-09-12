@@ -1,0 +1,11 @@
+<div>
+Redmine role id map, use on ${REDMINE_MEMBER,role="dev"} token, the key part is value of role param, value is redmine role id, key and value.
+map format like:manager:3,dev:4,test:5
+<br/>
+
+<h3>Token List</h3>
+<ul>
+  <li>${REDMINE_MEMBER,role="dev"}, role was define at roleMap, predefined role map has 3 pair manager:3, dev:4, test:5</li>
+  <li>${REDMINE_PROJECT_INFO,field="description"}, read redmine project information, you can specify a sub node in field parameter, the sub node text value will returned</li>
+</ul>
+</div>

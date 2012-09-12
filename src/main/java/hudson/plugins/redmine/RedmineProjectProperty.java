@@ -23,11 +23,17 @@ public class RedmineProjectProperty extends JobProperty<AbstractProject<?, ?>> {
 	public final String redmineWebsite;
 	
 	public final String projectName;
-	
+        
+        public final String username;
+        
+        public final String password;
+        
+        public final String roleMap;
+        
 	public final Boolean redmineVersion;
-	
+        
 	@DataBoundConstructor
-	public RedmineProjectProperty(String redmineWebsite, String projectName, Boolean redmineVersion) {
+	public RedmineProjectProperty(String redmineWebsite, String projectName, String username, String password, String roleMap, Boolean redmineVersion) {
 		if (StringUtils.isBlank(redmineWebsite)) {
 			redmineWebsite = null;
 		} else {
@@ -35,8 +41,12 @@ public class RedmineProjectProperty extends JobProperty<AbstractProject<?, ?>> {
 				redmineWebsite += '/';
 			}
 		}
+                
 		this.redmineWebsite = redmineWebsite;
 		this.projectName = projectName;
+                this.username = username;
+                this.password = password;
+                this.roleMap  = roleMap;
 		this.redmineVersion = redmineVersion;
 	}
 
@@ -76,12 +86,16 @@ public class RedmineProjectProperty extends JobProperty<AbstractProject<?, ?>> {
 				String redmineWebSite = req.getParameter("redmine.redmineWebsite");
 				String projectName = req.getParameter("redmine.projectName");
 				String redmineVersion = req.getParameter("redmine.version");
+                                String username = req.getParameter("redmine.username");
+                                String password = req.getParameter("redmine.password");
+                                String roleMap  = req.getParameter("redmine.roleMap");
 				
 				Boolean version = false;
 				if(StringUtils.isNotBlank(redmineVersion) && redmineVersion.equals("on")) {
 					version = true;
 				}
-				return new RedmineProjectProperty(redmineWebSite, projectName, version);
+                                
+				return new RedmineProjectProperty(redmineWebSite, projectName, username, password, roleMap, version);
 			
 			} catch (IllegalArgumentException e) {
 				throw new FormException("redmine.redmineWebsite", "redmine.redmineWebSite");

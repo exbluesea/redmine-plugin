@@ -3,11 +3,22 @@
     help="/plugin/redmine/help-global.html">
     <f:textbox name="redmine.redmineWebsite" value="${instance.redmineWebsite}" />
   </f:entry>
-  <f:entry title="Redmine project name">
+  <f:entry title="Redmine project name" help="/plugin/redmine/help-project.html">
     <f:textbox name="redmine.projectName" value="${instance.projectName}" />
   </f:entry>
+  <f:entry title="Redmine user name" help="/plugin/redmine/help-username.html">
+      <f:textbox name="redmine.username" value="${instance.username}" />
+  </f:entry>
+  
+  <f:entry title="Redmine password" help="/plugin/redmine/help-password.html">
+      <f:password name="redmine.password" value="${instance.password}" />
+  </f:entry>
+  
+  <f:entry title="Redmine role map" help="/plugin/redmine/help-roleMap.html">
+      <f:textbox name="redmine.roleMap" value="${instance.roleMap}" />
+  </f:entry>
+  
   <f:entry title="Redmine version">
   	<f:optionalBlock name="redmine.version" checked="${instance.redmineVersion}" title="0.8.1 or later" />
   </f:entry>
-  
 </j:jelly>

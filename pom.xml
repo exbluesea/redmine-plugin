@@ -11,7 +11,7 @@
 	<name>Hudson Redmine plugin</name>
  	<artifactId>redmine</artifactId>
   	<packaging>hpi</packaging>
-  	<version>0.11-SNAPSHOT</version>
+  	<version>0.11</version>
   	<url>http://wiki.jenkins-ci.org/display/JENKINS/Redmine+Plugin</url>
 
  	<developers>
@@ -47,6 +47,12 @@
       		<artifactId>subversion</artifactId>
       		<version>2.0.1</version>
     	</dependency>
+        <dependency>
+        	<groupId>org.jenkins-ci.plugins</groupId>
+        	<artifactId>token-macro</artifactId>
+        	<version>1.5.1</version>
+        	<optional>true</optional>
+      </dependency>
   	</dependencies>
   
     <repositories>

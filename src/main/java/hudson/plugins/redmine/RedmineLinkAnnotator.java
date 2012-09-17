@@ -41,16 +41,16 @@ public class RedmineLinkAnnotator extends ChangeLogAnnotator {
         LinkMarkup(String pattern, String href) {
             //pattern = NUM_PATTERN.matcher(pattern).replaceAll("([\\\\d|,| |&amp;|#]+)"); // \\\\d becomes \\d when in the expanded text.
 
-        	pattern = NUM_PATTERN.matcher(pattern).replaceAll("([\\\\d|,| |&amp;|#]+)"); // \\\\d becomes \\d when in the expanded text.
-        	pattern = ANYWORD_PATTERN.matcher(pattern).replaceAll("((?:\\\\w|[._-])+)");
+            pattern = NUM_PATTERN.matcher(pattern).replaceAll("([\\\\d|,| |&amp;|#]+)"); // \\\\d becomes \\d when in the expanded text.
+            pattern = ANYWORD_PATTERN.matcher(pattern).replaceAll("((?:\\\\w|[._-])+)");
             this.pattern = Pattern.compile(pattern);
             this.href = href;
         }
-
+        
         void process(MarkupText text, String url) {
         	for(SubText st : text.findTokens(pattern)) {
         		String[] message = st.getText().split(" ", 2);
-        		
+                        
         		if (message.length > 1) {
         			String[] nums = message[1].split(",|&amp;| ");
         			String splitValue = ",";
@@ -80,7 +80,7 @@ public class RedmineLinkAnnotator extends ChangeLogAnnotator {
         					}
         					if(StringUtils.isNotBlank(nums[i])) {
         						nums[i] = nums[i].replace("#", "");
-        						st.addMarkup(startpos, endpos, "<a href='"+url+"issues/"+nums[i].trim()+"'>", "</a>");
+                                                        st.addHyperlink(startpos, endpos, url + "issues/"+nums[i].trim());
         					}
         					startpos = endpos + splitValue.length();
         					
@@ -101,7 +101,7 @@ public class RedmineLinkAnnotator extends ChangeLogAnnotator {
     static final LinkMarkup[] MARKUPS = new LinkMarkup[] {
     	new LinkMarkup(
             "(?:#|refs |references |IssueID |fixes |closes )#?NUM",
-            "issues/show/$1"),
+            "issues/$1"),
         new LinkMarkup(
             "((?:[A-Z][a-z]+){2,})|wiki:ANYWORD",
             "wiki/$1$2"),

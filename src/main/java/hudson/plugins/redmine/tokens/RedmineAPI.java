@@ -68,7 +68,7 @@ public class RedmineAPI {
         String xpath = "/users/user";
         
         for(Element e : redmineAPI(urlString, xpath, prop.username, prop.password)) {
-            map.put(e.elementText("id"), e.elementText("login"));
+            map.put(e.elementText("id"), e.elementText("mail"));
         }
         
         return map;

@@ -19,10 +19,10 @@ import org.jvnet.hudson.test.HudsonTestCase;
  * @author yangxiaole
  */
 public class RedmineMemberTokenTest extends HudsonTestCase {
-    private static final String REDMINE_URL = "http://10.122.81.238";
+    private static final String REDMINE_URL = "http://10.122.81.238:8080";
     private static final String PROJECT_URL = "sztv-iphone";
-    private static final String USER_NAME   = "xiaole.yang";
-    private static final String PASSWORD    = "********";
+    private static final String USER_NAME   = "admin";
+    private static final String PASSWORD    = "admin";
     private static final String ROLE_MAP    = "manager:3,dev:4,test:5,designer:6";
     
     public void testRedmineAPI() {
@@ -56,10 +56,10 @@ public class RedmineMemberTokenTest extends HudsonTestCase {
 
         token.role = "test";
         String out = token.evaluate(build, TaskListener.NULL, "REDMINE_MEMBER");
-        assertEquals(out, "sha.li");
+        assertEquals(out, "sha.li@theotino.com");
         
         token.role = "manager";
-        assertEquals(token.evaluate(build, TaskListener.NULL, "REDMINE_MEMBER"), "xiaole.yang");
+        assertEquals(token.evaluate(build, TaskListener.NULL, "REDMINE_MEMBER"), "xiaole.yang@theotino.com");
         
     }
 }

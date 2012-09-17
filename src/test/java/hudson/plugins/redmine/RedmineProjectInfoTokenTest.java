@@ -7,7 +7,6 @@ package hudson.plugins.redmine;
 import hudson.model.FreeStyleBuild;
 import hudson.model.FreeStyleProject;
 import hudson.model.TaskListener;
-import hudson.plugins.redmine.tokens.MemberListToken;
 import hudson.plugins.redmine.tokens.ProjectInfoToken;
 import hudson.plugins.redmine.tokens.RedmineAPI;
 import java.io.IOException;
@@ -23,8 +22,8 @@ import org.jvnet.hudson.test.HudsonTestCase;
 public class RedmineProjectInfoTokenTest extends HudsonTestCase {
     private static final String REDMINE_URL = "http://10.122.81.238:8080";
     private static final String PROJECT_URL = "sztv-iphone";
-    private static final String USER_NAME   = "xiaole.yang";
-    private static final String PASSWORD    = "********";
+    private static final String USER_NAME   = "admin";
+    private static final String PASSWORD    = "admin";
 
     public void testGetProjectInfo () {
         RedmineProjectProperty prop = new RedmineProjectProperty(
